@@ -4,11 +4,15 @@ import { Fullscreen } from './Fullscreen.js';
 
 class HomeScreen {
     constructor(params) {
+        this.GAME = params.GAME;
+
         this.selector = '#game';
         this.DOM = document.querySelector(this.selector);
 
         this.TABLE = new ScoreTable();
-        this.FORM = new GameSetupForm();
+        this.FORM = new GameSetupForm({
+            GAME: this.GAME
+        });
         this.FULLSCREEN = new Fullscreen();
 
         this.init();
@@ -26,6 +30,7 @@ class HomeScreen {
                     <div class="form">FORM</div>
                     <div class="fullscreen">FULLSCREEN</div>`;
         this.DOM.innerHTML = HTML;
+        this.DOM.dataset.page = 'home';
 
         this.TABLE.render();
         this.FORM.render();
