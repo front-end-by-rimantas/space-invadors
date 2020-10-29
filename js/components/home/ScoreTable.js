@@ -11,6 +11,18 @@ class ScoreTable {
                 username: 'Ciucikas',
                 score: 800
             },
+            {
+                username: 'Ciburaska',
+                score: 750
+            },
+            {
+                username: 'Pingvinas',
+                score: 740
+            },
+            {
+                username: 'Debeselis',
+                score: 10
+            },
         ];
     }
 

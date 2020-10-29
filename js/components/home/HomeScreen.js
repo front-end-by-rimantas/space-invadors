@@ -26,9 +26,9 @@ class HomeScreen {
      * Metodas Home screen turiniui generuoti
      */
     render() {
-        const HTML = `<div class="table">TABLE</div>
-                    <div class="form">FORM</div>
-                    <div class="fullscreen">FULLSCREEN</div>`;
+        const HTML = `<div class="fullscreen">FULLSCREEN</div>
+                    <div class="half table">TABLE</div>
+                    <div class="half form">FORM</div>`;
         this.DOM.innerHTML = HTML;
         this.DOM.dataset.page = 'home';
 

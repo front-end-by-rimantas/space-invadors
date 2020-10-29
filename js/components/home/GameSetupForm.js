@@ -14,7 +14,8 @@ class GameSetupForm {
     render() {
         this.DOM = document.querySelector(this.selector);
 
-        const HTML = `<input type="text" value="">
+        const HTML = `<div class="title">Start new game!</div>
+                    <input type="text" placeholder="Username" value="">
                     <div class="btn">Play!</div>`;
         this.DOM.innerHTML = HTML;
         this.inputDOM = this.DOM.querySelector('input');

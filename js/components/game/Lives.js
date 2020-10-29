@@ -6,20 +6,28 @@ class Lives {
         this.DOM = null;
         this.livesDOM = null;
 
+        this.maxLives = 3;
         this.lives = 3;
+    }
+
+    hearts() {
+        // const empty = '🤍'.repeat(this.maxLives - this.lives);
+        const empty = '';
+        const full = '❤'.repeat(this.lives);
+        return empty + full;
     }
 
     render() {
         this.DOM = document.querySelector(this.selector);
         const HTML = `<div class="label">Lives:</div>
-                    <div class="value">3</div>`;
+                    <div class="value">${this.hearts()}</div>`;
         this.DOM.innerHTML = HTML;
         this.livesDOM = this.DOM.querySelector('.value');
     }
 
     update() {
         this.lives--;
-        this.livesDOM.innerText = this.lives;
+        this.livesDOM.innerText = this.hearts();
 
         if (this.lives === 0) {
             console.log('GAME OVER');

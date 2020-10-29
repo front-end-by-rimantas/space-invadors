@@ -6,13 +6,8 @@ class Fullscreen {
 
     render() {
         this.DOM = document.querySelector(this.selector);
-
-        const HTML = '<div class="btn">[ Fullscreen ]</div>';
-        this.DOM.innerHTML = HTML;
-
-        const btn = this.DOM.querySelector('.btn');
-        btn.addEventListener('click', this.openFullscreen)
-
+        this.DOM.innerHTML = '[ Fullscreen ]';
+        this.DOM.addEventListener('click', this.openFullscreen);
     }
 
     openFullscreen() {
