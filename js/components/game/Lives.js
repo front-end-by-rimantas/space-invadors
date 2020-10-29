@@ -11,9 +11,8 @@ class Lives {
     }
 
     hearts() {
-        // const empty = '🤍'.repeat(this.maxLives - this.lives);
-        const empty = '';
-        const full = '❤'.repeat(this.lives);
+        const empty = '<span class="dead">❤</span>'.repeat(this.maxLives - this.lives);
+        const full = '<span class="alive">❤</span>'.repeat(this.lives);
         return empty + full;
     }
 
