@@ -27,6 +27,7 @@ class Player {
                             src="./img/units/${this.playerImage}"
                             style="width: ${this.size}px;
                                 height: ${this.size}px;
+                                bottom: ${this.size}px;
                                 left: ${this.positionX}px;">`;
         this.PARENT.groundDOM.insertAdjacentHTML('beforeend', HTML);
 
@@ -68,9 +69,9 @@ class Player {
     }
 
     // TODO: gal verta pervadinti i "update"?
-    move(diff) {
-        this.lastShotTime += diff;
-        this.positionX += this.direction * diff * this.speed;
+    move(dt) {
+        this.lastShotTime += dt;
+        this.positionX += this.direction * dt * this.speed;
         if (this.positionX < 0) {
             this.positionX = 0;
         }

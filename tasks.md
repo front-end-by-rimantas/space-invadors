@@ -29,13 +29,13 @@ DONE:
 - zaidejas gali judeti horizontaliai
 - zaidejas gali sauti
 - kulkai pasiekus virsu, ja reikia pasalinti
+- sugeneruoti statinius priesus (nejuda)
+- priesai gali judeti horizontaliai
 
 IN PROGRESS:
-- sugeneruoti statinius priesus (nejuda) - kazkodel pasislinkes truputi i kaire
+- priesai gali saudyti
 
 TODO:
-- priesai gali judeti horizontaliai
-- priesai gali saudyti
 - prieso kulkai pasiekus apacia, ja reikia pasalinti
 - detektinti kada mano kulka paliecia priesa, jam sumazeja gyvybiu
 - detektinti kada prieso kulka paliecia zaideja, jam sumazeja gyvybiu

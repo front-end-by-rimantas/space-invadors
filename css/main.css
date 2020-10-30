@@ -193,6 +193,9 @@ body {
         background-size: contain;
         background-repeat: no-repeat;
     }
+        .ground > .bullet.enemy {
+            background-image: url(../img/elements/laserRed12.png);
+        }
     .ground > .enemy {
         position: absolute;
         top: 0;
