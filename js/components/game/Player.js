@@ -9,6 +9,10 @@ class Player {
         this.direction = 0;
         this.speed = 250;
 
+        this.playerWantsToShoot = false;
+        this.shootingRate = 1;                  // sekundemis
+        this.lastShotTime = 1;
+
         this.imageIndex = Math.ceil(Math.random() * 3);
         this.playerImage = `playerShip${this.imageIndex}_green.png`;
     }
@@ -44,7 +48,7 @@ class Player {
                     this.direction = 1;
                     break;
                 case "Space":
-                    // console.log('Saunu...');
+                    this.playerWantsToShoot = true;
                     break;
                 default:
                     break;
@@ -57,7 +61,7 @@ class Player {
                     this.direction = 0;
                     break;
                 case "Space":
-                    // console.log('Nebesaudau...');
+                    this.playerWantsToShoot = false;
                     break;
                 default:
                     break;
@@ -65,7 +69,9 @@ class Player {
         })
     }
 
+    // TODO: gal verta pervadinti i "update"?
     move(diff) {
+        this.lastShotTime += diff;
         this.positionX += this.direction * diff * this.speed;
         if (this.positionX < 0) {
             this.positionX = 0;
@@ -74,6 +80,10 @@ class Player {
             this.positionX = this.mostLeftPosition;
         }
         this.DOM.style.left = this.positionX + 'px';
+    }
+
+    canPlayerShoot() {
+        return this.shootingRate <= this.lastShotTime && this.playerWantsToShoot;
     }
 }
 

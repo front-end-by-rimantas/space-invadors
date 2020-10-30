@@ -1,6 +1,7 @@
 import { Score } from './Score.js';
 import { Lives } from './Lives.js';
 import { Player } from './Player.js';
+import { Bullet } from './Bullet.js';
 
 class SpaceInvadors {
     constructor(params) {
@@ -10,6 +11,8 @@ class SpaceInvadors {
         this.DOM = null;
         this.groundDOM = null;
         this.now = Date.now();
+        this.totalBulletsShot = 0;
+        this.initialBulletTopPosition = 0;
 
         this.SCORE = new Score();
         this.LIVES = new Lives({
@@ -18,6 +21,7 @@ class SpaceInvadors {
         this.PLAYER = new Player({
             PARENT: this
         });
+        this.playerBullets = [];
 
         this.init();
     }
@@ -41,6 +45,25 @@ class SpaceInvadors {
         this.PLAYER.move(diff);
 
         // jeigu zaidejas spaudzia space ir praejo reikiamas laiko tarpas - sauname
+        if (this.PLAYER.canPlayerShoot()) {
+            this.PLAYER.lastShotTime = 0;
+            this.playerBullets.push(new Bullet({
+                PARENT: this,
+                distance: 500,
+                id: ++this.totalBulletsShot,
+                x: this.PLAYER.positionX + this.PLAYER.size / 2,
+                y: this.initialBulletTopPosition
+            }));
+            console.log(this.playerBullets);
+        }
+
+        // pajudiname zaidejo kulkas
+        for (let bullet of this.playerBullets) {
+            bullet.move(diff);
+        }
+        //pasaliname kulkas is atminties, jei jos iskrido uz ekrano
+        this.playerBullets = this.playerBullets.filter(b => b.position.y >= 0);
+
         // pajudiname priesus
         // leidziame priesams nuspresti ar jie nori sauti
         requestAnimationFrame(() => {
@@ -99,6 +122,8 @@ class SpaceInvadors {
 
         this.generateEnemies();
         this.generatePlayer();
+
+        this.initialBulletTopPosition = parseInt(this.groundDOM.style.height) - this.PLAYER.size;
     }
 }
 

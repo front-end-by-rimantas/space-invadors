@@ -25,12 +25,13 @@ Nuzudzius priesa, reik perskaiciuoti kokiose X asies pozicijose yra tolimiausi k
 
 
 
-
-
-
-
+DONE:
 - zaidejas gali judeti horizontaliai
+
+IN PROGRESS:
 - zaidejas gali sauti
+
+TODO:
 - kulkai pasiekus virsu, ja reikia pasalinti
 - sugeneruoti statinius priesus (nejuda)
 - priesai gali judeti horizontaliai
