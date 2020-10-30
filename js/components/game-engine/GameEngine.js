@@ -24,6 +24,7 @@ class GameEngine {
                 break;
             case 'game':
                 this.GAME.render();
+                this.GAME.start();
                 break;
             default:
                 console.error(`ERROR: toks (${page}) psl nenumatytas`);

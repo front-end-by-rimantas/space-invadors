@@ -20,3 +20,21 @@ Features/tasks:
 
 
 Nuzudzius priesa, reik perskaiciuoti kokiose X asies pozicijose yra tolimiausi kaires ir desines puses reiksmes;
+
+
+
+
+
+
+
+
+
+- zaidejas gali judeti horizontaliai
+- zaidejas gali sauti
+- kulkai pasiekus virsu, ja reikia pasalinti
+- sugeneruoti statinius priesus (nejuda)
+- priesai gali judeti horizontaliai
+- priesai gali saudyti
+- prieso kulkai pasiekus apacia, ja reikia pasalinti
+- detektinti kada mano kulka paliecia priesa, jam sumazeja gyvybiu
+- detektinti kada prieso kulka paliecia zaideja, jam sumazeja gyvybiu

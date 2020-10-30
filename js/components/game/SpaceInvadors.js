@@ -9,6 +9,7 @@ class SpaceInvadors {
         this.selector = '#game';
         this.DOM = null;
         this.groundDOM = null;
+        this.now = Date.now();
 
         this.SCORE = new Score();
         this.LIVES = new Lives({
@@ -22,7 +23,29 @@ class SpaceInvadors {
     }
 
     init() {
+    }
 
+    start() {
+        console.log(this);
+        requestAnimationFrame(() => {
+            this.gameStep();
+        });
+    }
+
+    gameStep() {
+        const now = Date.now();
+        const diff = (now - this.now) / 1000;
+        this.now = now;
+
+        // jeigu zaidejas spaudzia i kaire/desine - reikia ji pajudinti
+        this.PLAYER.move(diff);
+
+        // jeigu zaidejas spaudzia space ir praejo reikiamas laiko tarpas - sauname
+        // pajudiname priesus
+        // leidziame priesams nuspresti ar jie nori sauti
+        requestAnimationFrame(() => {
+            this.gameStep();
+        });
     }
 
     generateEnemies() {
