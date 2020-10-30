@@ -23,8 +23,6 @@ class Player {
         this.mostLeftPosition = groundWidth - this.size;
         this.positionX = this.mostLeftPosition / 2;
 
-        console.log(this);
-
         const HTML = `<img class="player"
                             src="./img/units/${this.playerImage}"
                             style="width: ${this.size}px;

@@ -3,22 +3,22 @@ const levelsData = [
         level: 1,
         enemies: [
             {
-                row: 1,
+                rowIndex: 1,
                 count: 10,
                 type: 'green'
             },
             {
-                row: 2,
+                rowIndex: 2,
                 count: 10,
                 type: 'green'
             },
             {
-                row: 3,
+                rowIndex: 3,
                 count: 10,
                 type: 'green'
             },
             {
-                row: 4,
+                rowIndex: 4,
                 count: 10,
                 type: 'green'
             },
@@ -29,22 +29,22 @@ const levelsData = [
         level: 2,
         enemies: [
             {
-                row: 1,
+                rowIndex: 1,
                 count: 10,
                 type: 'green'
             },
             {
-                row: 2,
+                rowIndex: 2,
                 count: 10,
                 type: 'green'
             },
             {
-                row: 3,
+                rowIndex: 3,
                 count: 10,
                 type: 'green'
             },
             {
-                row: 4,
+                rowIndex: 4,
                 count: 10,
                 type: 'yellow'
             },
@@ -55,22 +55,22 @@ const levelsData = [
         level: 3,
         enemies: [
             {
-                row: 1,
+                rowIndex: 1,
                 count: 10,
                 type: 'green'
             },
             {
-                row: 2,
+                rowIndex: 2,
                 count: 10,
                 type: 'green'
             },
             {
-                row: 3,
+                rowIndex: 3,
                 count: 10,
                 type: 'yellow'
             },
             {
-                row: 4,
+                rowIndex: 4,
                 count: 10,
                 type: 'yellow'
             },
@@ -81,22 +81,22 @@ const levelsData = [
         level: 4,
         enemies: [
             {
-                row: 1,
+                rowIndex: 1,
                 count: 10,
                 type: 'green'
             },
             {
-                row: 2,
+                rowIndex: 2,
                 count: 10,
                 type: 'green'
             },
             {
-                row: 3,
+                rowIndex: 3,
                 count: 10,
                 type: 'yellow'
             },
             {
-                row: 4,
+                rowIndex: 4,
                 count: 10,
                 type: 'red'
             },

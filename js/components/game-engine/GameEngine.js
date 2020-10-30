@@ -1,8 +1,12 @@
+import { levelsData } from '../../data/levels.js';
 import { SpaceInvadors } from '../game/SpaceInvadors.js';
 import { HomeScreen } from '../home/HomeScreen.js';
 
 class GameEngine {
     constructor(params) {
+        this.levels = levelsData;
+        this.currentLevel = 1;
+
         this.HOME = new HomeScreen({
             GAME: this
         });

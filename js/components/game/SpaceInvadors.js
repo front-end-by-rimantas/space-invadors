@@ -2,6 +2,7 @@ import { Score } from './Score.js';
 import { Lives } from './Lives.js';
 import { Player } from './Player.js';
 import { Bullet } from './Bullet.js';
+import { Enemy } from './Enemy.js';
 
 class SpaceInvadors {
     constructor(params) {
@@ -13,6 +14,11 @@ class SpaceInvadors {
         this.now = Date.now();
         this.totalBulletsShot = 0;
         this.initialBulletTopPosition = 0;
+        this.spaceRatioBetweenPlanes = 2 / 3;
+        this.unitRows = 8;
+        this.unitsPerRow = 14;
+
+        this.levelInfo = this.GAME.levels[this.GAME.currentLevel - 1];
 
         this.SCORE = new Score();
         this.LIVES = new Lives({
@@ -22,6 +28,7 @@ class SpaceInvadors {
             PARENT: this
         });
         this.playerBullets = [];
+        this.enemies = [];
 
         this.init();
     }
@@ -54,7 +61,6 @@ class SpaceInvadors {
                 x: this.PLAYER.positionX + this.PLAYER.size / 2,
                 y: this.initialBulletTopPosition
             }));
-            console.log(this.playerBullets);
         }
 
         // pajudiname zaidejo kulkas
@@ -72,11 +78,29 @@ class SpaceInvadors {
     }
 
     generateEnemies() {
-        console.log('generuoju priesus...');
+        const size = this.calculateUnitSize();
+        const rowCount = this.levelInfo.enemies.length;
+        let id = 0;
+        for (let row of this.levelInfo.enemies) {
+            const positionY = (rowCount - row.rowIndex + 1) * size / this.spaceRatioBetweenPlanes;
+
+            for (let i = 0; i < row.count; i++) {
+                const positionShift = (this.unitsPerRow - row.count) / 2;
+                const x = (i + positionShift) * size / this.spaceRatioBetweenPlanes;
+
+                this.enemies.push(new Enemy({
+                    PARENT: this,
+                    id: ++id,
+                    type: row.type,
+                    x: x,
+                    y: positionY,
+                    size: size
+                }));
+            }
+        }
     }
 
     generatePlayer() {
-        console.log('generuoju zaideja...');
         this.PLAYER.render();
     }
 
@@ -88,12 +112,9 @@ class SpaceInvadors {
         let size = 0;
         const groundWidth = this.groundDOM.offsetWidth;         // 1400
         const groundHeight = this.groundDOM.offsetHeight;       // 800
-        const unitRows = 8;
-        const unitColumn = 10;
-        const unitsPerRow = 14;
 
-        const maxUnitWidth = groundWidth / unitsPerRow;          // 140px
-        const maxUnitHeight = groundHeight / unitRows;          // 100px
+        const maxUnitWidth = groundWidth / this.unitsPerRow;          // 140px
+        const maxUnitHeight = groundHeight / this.unitRows;          // 100px
 
         if (maxUnitWidth > maxUnitHeight) {
             size = maxUnitHeight;
@@ -101,9 +122,13 @@ class SpaceInvadors {
             size = maxUnitWidth;
         }
 
-        this.groundDOM.style.height = unitRows * size + 'px';
-        this.groundDOM.style.width = unitsPerRow * size + 'px';
+
+        this.groundDOM.style.height = this.unitRows * size + 'px';
+        this.groundDOM.style.width = this.unitsPerRow * size + 'px';
         this.groundDOM.classList.add('center');
+
+        // lektuvo dydis santykiu 1:2, jog butu vietos tarpams tart prieso lektuvu
+        size *= this.spaceRatioBetweenPlanes;
 
         return size;
     }
